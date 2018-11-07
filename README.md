@@ -89,6 +89,11 @@ bank.withdraw(Integer)
 bank.statement
 ```
 
+#### Screenshot
+
+<img width="352" alt="screenshot 2018-11-07 at 11 44 38" src="https://user-images.githubusercontent.com/41509062/48129818-8d5b5900-e282-11e8-8690-e0c3405b746b.png">
+
+
 ## Contributing
 
 If you wish to contribute to this repo, please fork, clone and submit a pull request and I'll be happy to review it.
