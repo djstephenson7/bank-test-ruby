@@ -70,6 +70,24 @@ describe 'balance' do
   end
 ```
 
+### How to use
+
+This program runs entirely through your machine's REPL (the most popular choices are either IRB or PRY). To open the app, cd to the root directory and type in either 'irb' or 'pry'.
+
+#### Before interacting
+
+```
+require './lib/bank.rb'
+require 'date'
+bank = Bank.new
+```
+#### List of commands
+
+```
+bank.deposit(Integer)
+bank.withdraw(Integer)
+bank.statement
+```
 
 ## Contributing
 
