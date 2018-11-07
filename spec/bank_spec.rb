@@ -13,7 +13,7 @@ describe Bank do
     it 'Displays a deposit transaction hash' do
       subject.deposit(100)
       expect(subject.history)
-        .to eq([debit: 0, credit: 100, balance: 100, date: Date.today.to_s])
+        .to eq([debit: 0, credit: 100, balance: 100, date: Date.today])
     end
   end
 
@@ -27,8 +27,8 @@ describe Bank do
       subject.deposit(100)
       subject.withdraw(50)
       expect(subject.history)
-        .to eq([{ balance: 100, credit: 100, debit: 0, date: Date.today.to_s },
-                { balance: 50, credit: 0, debit: 50, date: Date.today.to_s }])
+        .to eq([{ balance: 100, credit: 100, debit: 0, date: Date.today },
+                { balance: 50, credit: 0, debit: 50, date: Date.today }])
     end
 
     it 'raises an error if the user goes below 0' do
@@ -42,10 +42,10 @@ describe Bank do
       subject.deposit(1000)
       subject.deposit(2000)
       subject.withdraw(500)
-      expect(subject.statement).to eq('date || credit || debit || balance
-14/01/2012 || || 500.00 || 2500.00
-13/01/2012 || 2000.00 || || 3000.00
-10/01/2012 || 1000.00 || || 1000.00')
+      expect(subject.statement)
+        .to eq([{ balance: 1000, credit: 1000, date: Date.today, debit: 0 },
+                { balance: 3000, credit: 2000, date: Date.today, debit: 0 },
+                { balance: 2500, credit: 0, date: Date.today, debit: 500 }])
     end
   end
 end

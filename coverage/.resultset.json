@@ -52,11 +52,10 @@
         null,
         null,
         null,
+        null,
         null
       ],
       "/Users/danielstephenson/Documents/Projects/tech_tests/lib/bank.rb": [
-        1,
-        null,
         null,
         1,
         1,
@@ -85,6 +84,11 @@
         null,
         1,
         1,
+        1,
+        3,
+        null,
+        null,
+        null,
         null,
         null,
         1,
@@ -108,6 +112,6 @@
         null
       ]
     },
-    "timestamp": 1541593254
+    "timestamp": 1541610251
   }
 }

@@ -1,12 +1,10 @@
-require 'table_print'
-
 # The bank class
 class Bank
   attr_reader :balance, :history, :transaction
 
   def initialize
     @balance = 0
-    @transaction = { debit: 0, credit: 0, balance: 0, date: Date.today.to_s }
+    @transaction = { date: Date.today, credit: 0, debit: 0, balance: 0 }
     @history = []
   end
 
@@ -27,7 +25,13 @@ class Bank
   end
 
   def statement
-    tp @history.reverse
+    puts 'date || credit || debit || balance'
+    @history.reverse_each do |hash|
+      puts "#{hash[:date].strftime('%d/%m/%Y')}" ' || '\
+        "#{format('%.2f', hash[:credit])}" ' || '\
+        "#{format('%.2f', hash[:debit])}" ' || '\
+        "#{format('%.2f', hash[:balance])}"
+    end
   end
 
   private
@@ -35,17 +39,17 @@ class Bank
   def record_deposit(money)
     @transaction[:balance] = @balance
     @transaction[:credit]  = money
-    @transaction[:date]    = Date.today.to_s
+    @transaction[:date]    = Date.today
   end
 
   def record_withdrawal(money)
     @transaction[:balance] = @balance
     @transaction[:debit] = money
-    @transaction[:date] = Date.today.to_s
+    @transaction[:date] = Date.today
   end
 
   def store_transaction
     @history << @transaction
-    @transaction = { debit: 0, credit: 0, balance: 0, date: Date.today.to_s }
+    @transaction = { date: Date.today, credit: 0, debit: 0, balance: 0 }
   end
 end
