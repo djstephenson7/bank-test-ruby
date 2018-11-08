@@ -36,16 +36,4 @@ describe Bank do
       expect { subject.withdraw(15) }.to raise_error('Insufficient balance!')
     end
   end
-
-  describe '#statement' do
-    it 'produces a horrible looking table' do
-      subject.deposit(1000)
-      subject.deposit(2000)
-      subject.withdraw(500)
-      expect(subject.statement)
-        .to eq([{ balance: 1000, credit: 1000, date: Date.today, debit: 0 },
-                { balance: 3000, credit: 2000, date: Date.today, debit: 0 },
-                { balance: 2500, credit: 0, date: Date.today, debit: 500 }])
-    end
-  end
 end
