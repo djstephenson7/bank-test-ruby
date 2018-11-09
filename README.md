@@ -36,6 +36,10 @@ I'd like to avoid my balance going below 0.
 As a customer,
 So I can accurately keep track of my spending,
 I'd like to see my transaction history in a simple table.
+
+As a customer,
+So that I can borrow money temporarily,
+I can agree a fixed overdraft limit and apply it to my account.
 ```
 
 ## Getting Started
@@ -88,6 +92,11 @@ bank.deposit(Integer)
 bank.withdraw(Integer)
 bank.statement
 ```
+
+#### Screenshot
+
+<img width="352" alt="screenshot 2018-11-07 at 11 44 38" src="https://user-images.githubusercontent.com/41509062/48129818-8d5b5900-e282-11e8-8690-e0c3405b746b.png">
+
 
 ## Contributing
 
