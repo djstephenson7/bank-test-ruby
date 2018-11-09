@@ -3,13 +3,13 @@ require 'date'
 
 # The bank class
 class Bank
-  attr_reader :balance, :history, :transaction, :statement, :printer
+  attr_reader :balance, :history
 
-  def initialize
+  def initialize(printer = Printer.new)
+    @printer = printer
     @balance = 0
     @transaction = { date: Date.today, credit: 0, debit: 0, balance: 0 }
-    # @history = []
-    @printer = Printer.new
+    @history = []
   end
 
   def deposit(money)
@@ -28,8 +28,8 @@ class Bank
     store_transaction
   end
 
-  def statement
-    @printer.statement
+  def print_statement
+    @printer.statement(@history)
   end
 
   private
@@ -47,7 +47,7 @@ class Bank
   end
 
   def store_transaction
-    @printer.history << @transaction
+    @history << @transaction
     @transaction = { date: Date.today, credit: 0, debit: 0, balance: 0 }
   end
 end

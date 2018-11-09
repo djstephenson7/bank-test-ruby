@@ -2,6 +2,9 @@ require 'bank'
 require 'printer'
 
 describe Bank do
+  let(:statement_printer) { double(:statement) }
+  let(:subject) { Bank.new(statement_printer) }
+
   before do
     Bank.any_instance.stub(:puts)
   end
@@ -21,6 +24,14 @@ describe Bank do
     it 'raises an error if the user goes below 0' do
       subject.deposit(10)
       expect { subject.withdraw(15) }.to raise_error('Insufficient balance!')
+    end
+  end
+
+  describe 'print statements' do
+    it 'prints a vile table' do
+      subject.deposit(1000)
+      expect(statement_printer).to receive(:statement)
+      subject.print_statement
     end
   end
 end
