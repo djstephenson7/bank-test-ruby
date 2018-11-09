@@ -27,6 +27,14 @@ describe Bank do
     end
   end
 
+  describe '#print_statement' do
+    it 'stores the user overdraft limit' do
+      overdraft = double(:overdraft)
+      allow(overdraft).to receive(:new_limit).and_return(-100)
+      expect(subject.set_overdraft).to eq 100
+    end
+  end
+
   describe 'print statements' do
     it 'prints a vile table' do
       subject.deposit(1000)
